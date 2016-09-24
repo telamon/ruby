@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM hypriot/rpi-alpine-scratch
 
 # skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
@@ -17,7 +17,7 @@ ENV RUBYGEMS_VERSION 2.6.6
 # readline-dev vs libedit-dev: https://bugs.ruby-lang.org/issues/11869 and https://github.com/docker-library/ruby/issues/75
 RUN set -ex \
 	\
-	&& apk add --no-cache --virtual .ruby-builddeps \
+	&& apk update && apk add --no-cache --virtual .ruby-builddeps \
 		autoconf \
 		bison \
 		bzip2 \
